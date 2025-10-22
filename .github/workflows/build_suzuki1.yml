@@ -1,10 +1,6 @@
 name: rani-ukamble-group/build_suzuki1
 on:
-  push:
-  workflow_dispatch:
-concurrency:
-  group: "${{ github.ref }}"
-  cancel-in-progress: true
+  workflow_call:
 jobs:
   build_suzuki:
     runs-on: ubuntu-latest
@@ -15,6 +11,5 @@ jobs:
     - uses: actions/checkout@v4.1.0
       with:
         fetch-depth: 20
-        lfs: true
     - run: echo "building suzuki...."
     - run: echo "done"
